@@ -1,6 +1,5 @@
 import { Alert } from "@material-ui/lab";
 import Layout from "../components/Layout";
-//import styles from "../styles/Home.module.css";
 import getCommerce from "../utils/commerce";
 import {
   Box,
@@ -14,11 +13,11 @@ import {
 } from "@material-ui/core";
 import Link from "next/link";
 
-export default function Home(props) {
+export default function Product(props) {
   const { products } = props;
 
   return (
-    <Layout title="Home" commercePublicKey={props.commercePublicKey}>
+    <Layout title="Product" commercePublicKey={props.commercePublicKey}>
       {products.length === 0 && <Alert>No Product has be found.</Alert>}
 
       <Grid container spacing={1}>
