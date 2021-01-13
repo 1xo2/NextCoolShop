@@ -68,4 +68,7 @@ export const useStyles = makeStyles((theme) => ({
     minWidth: 120,
     width: "100%",
   },
+  imgProd:{
+      width:'100%'
+  }
 }));
