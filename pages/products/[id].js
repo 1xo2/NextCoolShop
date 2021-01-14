@@ -1,37 +1,63 @@
 import { Alert } from "@material-ui/lab";
 import {
-    Box,
-    Button,
-    Card,
-    Grid,
-    List,
-    ListItem,
-    MenuItem,
-    Select,
-    Slide,
-    Typography,
+  Box,
+  Button,
+  Card,
+  Grid,
+  List,
+  ListItem,
+  MenuItem,
+  Select,
+  Slide,
+  Typography,
 } from "@material-ui/core";
 //import Link from "next/link";
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from "react";
 import { useStyles } from "../../utils/Styles";
 import Layout from "../../components/Layout";
 import getCommerce from "../../utils/commerce";
-import { Store } from '../../components/Store';
-import Router from 'next/router';
+import { Store } from "../../components/Store";
+import Router from "next/router";
+import {
+//  CART_RETRIEVE_REQUEST,
+  CART_RETRIEVE_SUCCESS,
+//  ORDER_SET,
+} from "../../utils/Constants";
+
+
+
 
 
 export default function Product(props) {
   const { product } = props;
   const [quantity, setQuantity] = useState(1);
-const classes = useStyles();
+  const classes = useStyles();
 
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
 
-  const addToCartHandler = async() => {
-    // todo
+  const addToCartHandler = async () => {
+    const commerce = getCommerce(props.commercePublicKey);
+
+    const lineItem = cart.data.line_items.find(
+      (x) => x.product_id === product.id
+    );
+
+    let cartData;
+
+    if (lineItem) {
+      cartData = await commerce.cart.update(lineItem.id, {
+        quantity: quantity,
+      });
+    } else {
+      cartData = await commerce.cart.add(product.id, quantity);
+    }
+    dispatch({ type: CART_RETRIEVE_SUCCESS, payload: cartData.cart });
+    Router.push("/cart");
   };
 
   return (
-    <Layout title="Product" commercePublicKey={props.commercePublicKey}>
+    <Layout title={product.name} commercePublicKey={props.commercePublicKey}>
       <Slide direction="up" in={true}>
         <Grid container spacing={1}>
           <Grid item md={6}>
@@ -93,7 +119,7 @@ const classes = useStyles();
                     </Grid>
                   </Grid>
                 </ListItem>
-                
+
                 {product.quantity > 0 && (
                   <>
                     <ListItem>
@@ -143,12 +169,12 @@ const classes = useStyles();
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
-  console.log('id:', id)
+  console.log("id:", id);
   const commerce = getCommerce();
   const product = await commerce.products.retrieve(id, {
-    type: 'permalink',
+    type: "permalink",
   });
-  
-  console.log('product:', product)
+
+  console.log("product:", product);
   return { props: { product } };
 }

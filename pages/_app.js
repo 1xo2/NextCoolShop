@@ -1,17 +1,14 @@
-import "../styles/globals.css";
-import { Store } from "../components/Store";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
-import Router from "next/router";
-import { useEffect } from "react";
+import React, { useEffect } from 'react';
+import Router from 'next/router';
+import NProgress from 'nprogress'; //nprogress module
+import 'nprogress/nprogress.css'; //styles of nprogress
+import { StoreProvider } from '../components/Store';
+//Binding events.
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
-
-function MyApp({ Component, pageProps }) {
-
-
+export default function MyApp({ pageProps, Component }) {
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -20,15 +17,12 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
 
-
   return (
-    <Store.Provider>
+    <StoreProvider>
       <Component {...pageProps} />
-    </Store.Provider>
+    </StoreProvider>
   );
 }
-
-export default MyApp;
 
 MyApp.getInitialProps = async () => {
   return {
