@@ -1,3 +1,4 @@
+import React from 'react'
 import { Alert } from "@material-ui/lab";
 import Layout from "../components/Layout";
 //import styles from "../styles/Home.module.css";
