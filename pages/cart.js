@@ -27,7 +27,7 @@ import { useContext } from "react";
 import { Store } from "../components/Store";
 import { useStyles } from "../utils/Styles";
 import { CART_RETRIEVE_SUCCESS } from "../utils/Constants";
-import Router from "next/Router";
+import Router from "next/router";
 
 function Cart(props) {
   //const { products } = props;

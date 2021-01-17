@@ -26,7 +26,7 @@ import {
 import { useContext } from "react";
 import { Store } from "../components/Store";
 import { useStyles } from "../utils/Styles";
-import Router from "next/Router";
+import Router from "next/router";
 import { CART_RETRIEVE_SUCCESS, ORDER_SET } from "../utils/Constants";
 
 const dev = process.env.NODE_ENV === "development";

@@ -17,11 +17,10 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
-import Link from "next/link";
 import { useContext } from "react";
 import { Store } from "../components/Store";
 import { useStyles } from "../utils/Styles";
-import Router from "next/Router";
+
 
 function Confirmation(props) {
   const classes = useStyles();
