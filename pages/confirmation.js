@@ -103,7 +103,7 @@ function Confirmation(props) {
                         <TableRow>
                           <TableCell>Name</TableCell>
                           <TableCell align="right">Quantity</TableCell>
-                          <TableCell align="right">Price</TableCell>
+                          <TableCell align="right">Unit Price</TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
