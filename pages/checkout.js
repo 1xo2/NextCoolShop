@@ -92,7 +92,7 @@ function Checkout(props) {
   const [shippingOption, setShippingOption] = useState({});
 
   // stepper
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const steps = [
     "Customer information",
     "Shipping details",
