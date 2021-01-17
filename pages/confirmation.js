@@ -39,7 +39,7 @@ function Confirmation(props) {
       ) : (
         <React.Fragment>
           <Typography variant="h1" component="h1">
-            Order {order.id}
+            Order ID: { order.id}
           </Typography>
           <Slide direction="up" in={true}>
             <Grid container spacing={1}>
