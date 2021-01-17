@@ -44,7 +44,7 @@ function Confirmation(props) {
           </Typography>
           <Slide direction="up" in={true}>
             <Grid container spacing={1}>
-              <Grid item md={9} spacing={1}>
+              <Grid item md={9}>
                 <Card className={classes.p1}>
                   <Typography variant="h2" component="h2">
                     customer details
@@ -99,45 +99,47 @@ function Confirmation(props) {
                     Order Items
                   </Typography>
                   <TableContainer>
-                    <Table aria-label="Order">
+                    <Table aria-label="Orders">
                       <TableHead>
                         <TableRow>
                           <TableCell>Name</TableCell>
                           <TableCell align="right">Quantity</TableCell>
                           <TableCell align="right">Price</TableCell>
                         </TableRow>
-                        <TableBody>
-                          {order.order.line_items.map((cartItem) => (
-                            <TableRow key={cartItem.name}>
-                              <TableCell component="th" scope="row">
-                                {cartItem.name}
-                              </TableCell>
-                              <TableCell align="right">
-                                {cartItem.quantity}
-                              </TableCell>
-                              <TableCell align="right">
-                                {cartItem.price.formatted_with_symbol}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
                       </TableHead>
+                      <TableBody>
+                        {order.order.line_items.map((cartItem) => (
+                          <TableRow key={cartItem.name}>
+                            <TableCell component="th" scope="row">
+                              {cartItem.name}
+                            </TableCell>
+                            <TableCell align="right">
+                              {cartItem.quantity}
+                            </TableCell>
+                            <TableCell align="right">
+                              {cartItem.price.formatted_with_symbol}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
                     </Table>
                   </TableContainer>
                 </Card>
               </Grid>
+
               <Grid item xs={12} md={3}>
                 <Card>
                   <Typography component="h2" variant="h2">
-                    Order Summery
+                    Order Summary
                   </Typography>
+
                   <List>
                     <ListItem>
                       <Grid container>
-                        <Grid item sx={6}>
+                        <Grid item xs={6}>
                           <Typography>Subtotal</Typography>
                         </Grid>
-                        <Grid item sx={6}>
+                        <Grid item xs={6}>
                           <Typography align="right">
                             {order.order.subtotal.formatted_with_symbol}
                           </Typography>
@@ -147,10 +149,10 @@ function Confirmation(props) {
 
                     <ListItem>
                       <Grid container>
-                        <Grid item sx={6}>
-                          <Typography>Tex</Typography>
+                        <Grid item xs={6}>
+                          <Typography>Tax</Typography>
                         </Grid>
-                        <Grid item sx={6} align="right">
+                        <Grid item xs={6} align="right">
                           <Typography>
                             {order.order.tax.formatted_with_symbol}
                           </Typography>
@@ -160,10 +162,10 @@ function Confirmation(props) {
 
                     <ListItem>
                       <Grid container>
-                        <Grid item sx={6}>
+                        <Grid item xs={6}>
                           <Typography>Shipping</Typography>
                         </Grid>
-                        <Grid item sx={6} align="right">
+                        <Grid item xs={6} align="right">
                           <Typography>
                             {order.order.shipping.price.formatted_with_symbol}
                           </Typography>
@@ -173,10 +175,10 @@ function Confirmation(props) {
 
                     <ListItem>
                       <Grid container>
-                        <Grid item sx={6}>
+                        <Grid item xs={6}>
                           <Typography>Total</Typography>
                         </Grid>
-                        <Grid item sx={6} align="right">
+                        <Grid item xs={6} align="right">
                           <Typography>
                             {order.order.total_with_tax.formatted_with_symbol}
                           </Typography>
@@ -186,10 +188,10 @@ function Confirmation(props) {
 
                     <ListItem>
                       <Grid container>
-                        <Grid item sx={6}>
+                        <Grid item xs={6}>
                           <Typography variant="h3">Total Paid</Typography>
                         </Grid>
-                        <Grid item sx={6}>
+                        <Grid item xs={6}>
                           <Typography variant="h3" align="right">
                             {order.order.total_with_tax.formatted_with_symbol}
                           </Typography>
