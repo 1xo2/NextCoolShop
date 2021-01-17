@@ -160,4 +160,6 @@ function Cart(props) {
 //   return { props: { products } };
 // }
 
+
+// client render
 export default dynamic(() => Promise.resolve(Cart), { ssr: false });

@@ -7,9 +7,13 @@ import {
 
 export const Store = createContext();
 
+const order =
+  typeof window !== 'undefined' && window.localStorage.getItem('order_receipt')
+    ? JSON.parse(window.localStorage.getItem('order_receipt'))
+    : null;
 const initialState = {
   cart: { loading: true },
-  order: null,
+  order,
 };
 
 function reducer(state, action) {
