@@ -18,8 +18,7 @@ import { Store } from "./Store";
 import { siteName } from "../utils/config";
 import {
   CART_RETRIEVE_REQUEST,
-  CART_RETRIEVE_SUCCESS,
-  ORDER_SET,
+  CART_RETRIEVE_SUCCESS,  
 } from "../utils/Constants";
 
 import getCommerce from "../utils/commerce";
